@@ -1,6 +1,7 @@
 import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
 import { Button } from "@mui/material";
-import generateRandomLaw from "./RandomLaw";
+import { useContext } from "react";
+import { LawsGeneratorContext, LawsGeneratorContextType } from "../context/LawsGeneratorContext";
 
 interface MenuItemProps {
   icon: JSX.Element;
@@ -11,7 +12,7 @@ interface MenuItemProps {
 const MenuItem: React.FC<MenuItemProps> = ({ icon, children, onClick }) => {
   return (
     <div className="">
-      <Button startIcon={icon} onClick={onClick}>
+      <Button startIcon={icon} onClick={onClick} >
         {children}
       </Button>
     </div>
@@ -19,6 +20,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, children, onClick }) => {
 };
 
 const SideBar: React.FC = () => {
+  const { generateRandomLaw } = useContext(LawsGeneratorContext) as LawsGeneratorContextType;
   return (
     <div className=" p-3">
       <div className="p-4 rounded-md border">
