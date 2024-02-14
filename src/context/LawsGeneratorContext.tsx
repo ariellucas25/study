@@ -25,7 +25,7 @@ export const LawsGeneratorStore: React.FC<LawsGeneratorStorePropsType> = ({ chil
         const randomIndex = Math.floor(Math.random() * lawsData.lawsData.length);
         setCurrentLaw(lawsData.lawsData[randomIndex]);
       };
-      const [currentLaw, setCurrentLaw] = useState<LawType>({} as LawType);
+    const [currentLaw, setCurrentLaw] = useState<LawType>({} as LawType);
     return (
         <LawsGeneratorContext.Provider value={{generateRandomLaw, currentLaw}} >{children}</LawsGeneratorContext.Provider>
     );
