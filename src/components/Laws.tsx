@@ -1,14 +1,14 @@
 import { useQuery } from "@apollo/client";
-import { GET_FAVORITE_LAWS } from "../Data/ServiceData";
+import { GET_LAWS } from "../Data/ServiceData";
 import LawType from "../models/LawModel";
 
-const FavoriteLaws = () => {
+const Laws = () => {
 
 type responseType = {
-  favoriteLaws: LawType[];
+  laws: LawType[];
 }
 
-const { loading, error, data } = useQuery<responseType>(GET_FAVORITE_LAWS);
+const { loading, error, data } = useQuery<responseType>(GET_LAWS);
 
   if(loading) return <p>Carregando...</p>
   if(error) return <p>Ocorreu um erro..</p>
@@ -19,7 +19,7 @@ const { loading, error, data } = useQuery<responseType>(GET_FAVORITE_LAWS);
 
   return (
     <div>
-      {data?.favoriteLaws.map(law => (
+      {data?.laws.map(law => (
         <div key={law.titulo}>
           <h2>{law.titulo}</h2>
         </div>
@@ -28,4 +28,4 @@ const { loading, error, data } = useQuery<responseType>(GET_FAVORITE_LAWS);
   );
 };
 
-export default FavoriteLaws;
+export default Laws;
