@@ -3,7 +3,7 @@ export type LawType = {
     descricao: string;
     impacto: string;
     ano?: string;
-    isFavorite?: boolean;
+    isFavorite: boolean;
 }
 
 export default LawType;

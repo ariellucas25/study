@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink, gql } from '@apollo/client';
 
 export const httpLink = createHttpLink({
-    uri: 'http://localhost:4000/graphql', 
+    uri: 'http://localhost:5000/graphql', 
     });
 
 export const client = new ApolloClient({
@@ -11,21 +11,33 @@ export const client = new ApolloClient({
 
 export const GET_FAVORITE_LAWS = gql`
     query {
-        favoriteLaws {
+        getFavoriteLaws {
             titulo
             descricao
             impacto
+            isFavorite
         }
     }
 `;
 
 export const GET_LAWS = gql`
     query {
-        laws {
+        getLaws {
             titulo
             descricao
             impacto
+            isFavorite
         }
     }
 `;
-    
+
+export const TOGGLE_FAVORITE = gql`
+    mutation toFavorite($titulo: String!) {
+        toFavorite(titulo: $titulo) {
+            titulo
+            descricao
+            impacto
+            isFavorite
+        }
+    }
+`;

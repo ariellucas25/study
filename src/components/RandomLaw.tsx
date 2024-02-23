@@ -1,13 +1,11 @@
 import { useContext, useEffect } from "react";
 import { LawsGeneratorContext, LawsGeneratorContextType } from "../context/LawsGeneratorContext";
 
-
-
 const RandomLaw = () => {
   const { generateRandomLaw, currentLaw } = useContext(LawsGeneratorContext) as LawsGeneratorContextType;
 
   useEffect(() => {
-    generateRandomLaw();
+     generateRandomLaw();
   }, []);
 
   return (

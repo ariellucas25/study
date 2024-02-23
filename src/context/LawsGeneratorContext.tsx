@@ -1,13 +1,13 @@
 import React, { ReactNode, createContext, useState } from "react";
-//import lawsData from '../Data/lawsData.json';
 import LawType from "../models/LawModel";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_LAWS } from "../Data/ServiceData";
 
 
 export type LawsGeneratorContextType = {
     generateRandomLaw: () => void;
     currentLaw: LawType;
+    setCurrentLaw: React.Dispatch<React.SetStateAction<LawType>>;
 };
 
 type LawsGeneratorStorePropsType = {
@@ -15,29 +15,34 @@ type LawsGeneratorStorePropsType = {
 }
 
 type responseType = {
-    laws: LawType[];
-  }
+    getLaws: LawType[];
+}
+
 
 export const LawsGeneratorContext = createContext<LawsGeneratorContextType | undefined>(undefined);
 
 export const LawsGeneratorStore: React.FC<LawsGeneratorStorePropsType> = ({ children }) => {
 
-    
-    //select a random law in the list 
     const { loading, error, data } = useQuery<responseType>(GET_LAWS);
 
     const [currentLaw, setCurrentLaw] = useState<LawType>({} as LawType);
 
     const generateRandomLaw = () => {
-        if (data && data.laws) {
-            const randomIndex = Math.floor(Math.random() * data.laws.length);
-            setCurrentLaw(data.laws[randomIndex]);
+        if (!loading && data && data.getLaws) {
+            const randomIndex = Math.floor(Math.random() * data.getLaws.length);
+            setCurrentLaw(data.getLaws[randomIndex]);
         }
     };
 
+    if (loading) return <p>Carregando...</p>;
+
+    // Se houver um erro, você pode tratar o erro aqui
+    if (error) return <p>Ocorreu um erro ao carregar os dados...</p>;
+
+     
 
     return (
-        <LawsGeneratorContext.Provider value={{ generateRandomLaw, currentLaw }} >{children}</LawsGeneratorContext.Provider>
+        <LawsGeneratorContext.Provider value={{ generateRandomLaw, currentLaw, setCurrentLaw }} >{children}</LawsGeneratorContext.Provider>
     );
 
     

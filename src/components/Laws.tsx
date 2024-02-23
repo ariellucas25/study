@@ -5,7 +5,7 @@ import LawType from "../models/LawModel";
 const Laws = () => {
 
 type responseType = {
-  laws: LawType[];
+  getLaws: LawType[];
 }
 
 const { loading, error, data } = useQuery<responseType>(GET_LAWS);
@@ -19,12 +19,20 @@ const { loading, error, data } = useQuery<responseType>(GET_LAWS);
 
   return (
     <div>
-      {data?.laws.map(law => (
+      <div>
+      {data?.getLaws.map(law => (
         <div key={law.titulo}>
           <h2>{law.titulo}</h2>
+          <p>{law.isFavorite.toString()}</p>
+          <br></br>
         </div>
       ))}
     </div>
+
+    
+
+    </div>
+    
   );
 };
 
