@@ -29,8 +29,9 @@ export const LawsGeneratorStore: React.FC<LawsGeneratorStorePropsType> = ({ chil
 
     const generateRandomLaw = () => {
         if (!loading && data && data.getLaws) {
-            const randomIndex = Math.floor(Math.random() * data.getLaws.length);
-            setCurrentLaw(data.getLaws[randomIndex]);
+            const nonFavoriteLaws = data.getLaws.filter(law => !law.isFavorite);
+            const randomIndex = Math.floor(Math.random() * nonFavoriteLaws.length);
+            setCurrentLaw(nonFavoriteLaws[randomIndex]);
         }
     };
 
@@ -42,7 +43,10 @@ export const LawsGeneratorStore: React.FC<LawsGeneratorStorePropsType> = ({ chil
      
 
     return (
-        <LawsGeneratorContext.Provider value={{ generateRandomLaw, currentLaw, setCurrentLaw }} >{children}</LawsGeneratorContext.Provider>
+        <LawsGeneratorContext.Provider 
+            value={{ generateRandomLaw, currentLaw, setCurrentLaw }} >
+                {children}
+        </LawsGeneratorContext.Provider>
     );
 
     

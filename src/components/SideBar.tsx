@@ -1,7 +1,4 @@
-import ChangeCircleIcon from "@mui/icons-material/ChangeCircle";
-import StarIcon from '@mui/icons-material/Star';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import PrintIcon from '@mui/icons-material/Print';
+import { icons } from './icons';
 import MenuItem from './MenuItem';
 import { useContext } from "react";
 import { LawsGeneratorContext, LawsGeneratorContextType } from "../context/LawsGeneratorContext";
@@ -25,18 +22,22 @@ const SideBar: React.FC = () => {
     } catch (error) {
         console.error('Erro ao alternar favorito:', error);
     }
-};
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   return (
-    <div className=" p-3">
+    <div className="print:hidden p-3">
       <div className="p-4 rounded-xl border">
-        <MenuItem icon={<ChangeCircleIcon />} onClick={generateRandomLaw}>
+        <MenuItem icon={<icons.ChangeCircleIcon />} onClick={generateRandomLaw}>
           Nova lei
         </MenuItem>
-        <MenuItem icon={isFavorite ? <StarIcon /> : <StarOutlineIcon /> } onClick={handleToggleFavorite} >
+        <MenuItem icon={isFavorite ? <icons.StarIcon /> : <icons.StarOutlineIcon /> } onClick={handleToggleFavorite} >
         {isFavorite ? "Favorita" : "Favoritar"  }
         </MenuItem> 
-        <MenuItem icon={<PrintIcon />} onClick={generateRandomLaw}>
+        <MenuItem icon={<icons.PrintIcon />} onClick={handlePrint}>
           Imprimir
         </MenuItem>
       </div>

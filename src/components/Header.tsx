@@ -18,15 +18,15 @@ const Header: React.FC = () => {
       };
 
     return (
-        <div className="flex  px-10 py-5 text-blue-900 border-b justify-center">
+        <div className=" flex  px-10 py-5 text-blue-900 border-b justify-center">
             <div className='flex justify-between w-full max-w-5xl gap-4'>
                 <div className="flex items-center">
                     <img src={image} className="w-12 flex flex-row mr-2"></img>
-                    <div>
-                        <Typography variant="h5" component="h2">Ariel UI Study</Typography>
+                    <div className="print:flex print:justify-center print:items-center">
+                        <Typography variant="h5" component="h2">Leis Interessantes</Typography>
                     </div>
                 </div>
-                <div className='flex space-x-2'>
+                <div className='flex space-x-2 print:hidden'>
                     <Button variant="outlined" onClick={handleClick}>Login</Button>
                     <Button variant="outlined" onClick={handleClick2}>Criar conta</Button>
                 </div>

@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
-import { useContext, useState } from "react";
-import { LawsGeneratorStore, LawsGeneratorContextType, LawsGeneratorContext } from '../context/LawsGeneratorContext';
+import { LawsGeneratorStore } from '../context/LawsGeneratorContext';
 
 type MenuItemPropsType = {
     icon: JSX.Element;
@@ -9,10 +8,6 @@ type MenuItemPropsType = {
   }
   
   const MenuItem: React.FC<MenuItemPropsType> = ({ icon, children, onClick }) => {
-    const { generateRandomLaw, favoriteLaw, currentLaw } = useContext(LawsGeneratorContext) as LawsGeneratorContextType;
-    const [isFavorite, setIsFavorite] = useState(currentLaw.isFavorite)
-
-
     return (
       <div className="">
         <LawsGeneratorStore>

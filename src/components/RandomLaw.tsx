@@ -9,7 +9,7 @@ const RandomLaw = () => {
   }, []);
 
   return (
-    <div>
+    <div className="print:block">
       <div className="max-w-xl mt-3 p-3 bg-white rounded-md shadow-md">
         <h2 className="text-xl font-semibold mb-4">{currentLaw.titulo}</h2>
         <p className="text-gray-700 mb-4">{currentLaw.descricao}</p>
