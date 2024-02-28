@@ -10,3 +10,9 @@ Interface: React + Tailwind
 (outros recursos: Material UI Icons)
 
 Back-end (https://github.com/ariellucas25/back-end-leis): GraphQL + Apollo Server + MongoDB Atlas 
+
+![Tela](https://github.com/ariellucas25/study/assets/17830596/1f48abe6-fd9b-49db-893e-e95bd76c0b6d)
+
+Na próxima versão irei implantar um sistema de Cadastro e Login de usuários.
+
+Espero que gostem!! <3 
